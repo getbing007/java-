@@ -30,53 +30,54 @@ public class TestMakePDF {
 		}
 	}
 
-	// ÏÈ½¨Á¢Document¶ÔÏó£ºÏà¶ÔÓ¦µÄ Õâ¸ö°æ±¾µÄjarÒıÈëµÄÊÇcom.lowagie.text.Document
+	// å…ˆå»ºç«‹Documentå¯¹è±¡ï¼šç›¸å¯¹åº”çš„ è¿™ä¸ªç‰ˆæœ¬çš„jarå¼•å…¥çš„æ˜¯com.lowagie.text.Document
 	Document document = new Document(PageSize.A4, 36.0F, 36.0F, 36.0F, 36.0F);
 
 	public void getPDFdemo() throws DocumentException, IOException {
-		// Õâ¸öµ¼³öÓÃµÄÊÇ iTextAsian.jar ºÍiText-2.1.3.jar ÊôÓÚ±È½ÏÀÏµÄ·½·¨¡£ ¾ßÌåÏÂÔÚµØÖ·¼û£º
-		// Ê×ÏÈ
-		// ×ÖÌåµÄ¶¨Òå£ºÕâÀïÓÃµÄÊÇ×Ô´øµÄjarÀïÃæµÄ×ÖÌå
+		// è¿™ä¸ªå¯¼å‡ºç”¨çš„æ˜¯ iTextAsian.jar å’ŒiText-2.1.3.jar å±äºæ¯”è¾ƒè€çš„æ–¹æ³•ã€‚ å…·ä½“ä¸‹åœ¨åœ°å€è§ï¼š
+		// é¦–å…ˆ
+		// å­—ä½“çš„å®šä¹‰ï¼šè¿™é‡Œç”¨çš„æ˜¯è‡ªå¸¦çš„jaré‡Œé¢çš„å­—ä½“
 		// BaseFont bfChinese = BaseFont.createFont("STSong-Light",
 		// "UniGB-UCS2-H", false);
-		// µ±È»ÄãÒ²¿ÉÒÔÓÃÄãµçÄÔÀïÃæ´øµÄ×ÖÌå¿â
+		// å½“ç„¶ä½ ä¹Ÿå¯ä»¥ç”¨ä½ ç”µè„‘é‡Œé¢å¸¦çš„å­—ä½“åº“
 		BaseFont bfChinese = BaseFont.createFont("C:/WINDOWS/Fonts/SIMSUN.TTC,1", BaseFont.IDENTITY_H,
 				BaseFont.EMBEDDED);
-		// ¶¨Òå×ÖÌå ×¢ÒâÔÚ×îĞÂµÄ°üÀïÃæ ÑÕÉ«ÊÇ·â×°µÄ
+		// å®šä¹‰å­—ä½“ æ³¨æ„åœ¨æœ€æ–°çš„åŒ…é‡Œé¢ é¢œè‰²æ˜¯å°è£…çš„
 		Font fontChinese8 = new Font(bfChinese, 10.0F, 0, new Color(59, 54, 54));
-		// Éú³ÉpdfµÄµÚÒ»¸ö²½Öè£º
-		// ±£´æ±¾µØÖ¸¶¨Â·¾¶
+		// ç”Ÿæˆpdfçš„ç¬¬ä¸€ä¸ªæ­¥éª¤ï¼š
+		// ä¿å­˜æœ¬åœ°æŒ‡å®šè·¯å¾„
 		saveLocal();
 		document.open();
-		ByteArrayOutputStream ba = new ByteArrayOutputStream();
+//		ByteArrayOutputStream ba = new ByteArrayOutputStream();
 		// PdfWriter writer = PdfWriter.getInstance(document, ba);
 		document.open();
-		// »ñÈ¡´Ë±àÒëµÄÎÄ¼şÂ·¾¶
+		// è·å–æ­¤ç¼–è¯‘çš„æ–‡ä»¶è·¯å¾„
 //		String path = this.getClass().getClassLoader().getResource("").getPath();
-		// »ñÈ¡¸ùÂ·¾¶
+		// è·å–æ ¹è·¯å¾„
 //		String filePath = path.substring(1, path.length() - 15);
-		// »ñÈ¡Í¼Æ¬Â·¾¶ ÕÒµ½ÄãĞèÒªÍùpdfÉÏÉú³ÉµÄÍ¼Æ¬
-		// ÕâÀï¸ù¾İ×Ô¼ºµÄ»ñÈ¡µÄÂ·¾¶Ğ´ Ö»ÒªÕÒµ½Í¼Æ¬Î»ÖÃ¾Í¿ÉÒÔ
+		// è·å–å›¾ç‰‡è·¯å¾„ æ‰¾åˆ°ä½ éœ€è¦å¾€pdfä¸Šç”Ÿæˆçš„å›¾ç‰‡
+		// è¿™é‡Œæ ¹æ®è‡ªå·±çš„è·å–çš„è·¯å¾„å†™ åªè¦æ‰¾åˆ°å›¾ç‰‡ä½ç½®å°±å¯ä»¥
 		String picPath = "C:\\Users\\liubing17\\Desktop\\images\\";
-		// ÍùPDFÖĞÌí¼Ó¶ÎÂä
+		// å¾€PDFä¸­æ·»åŠ æ®µè½
 		Paragraph pHeader = new Paragraph();
-		pHeader.add(new Paragraph("The word you want to input", new Font(bfChinese, 8.0F, 1)));
-		// pHeader.add(new Paragraph("ÎÄ×Ö", ×ÖÌå ¿ÉÒÔ×Ô¼ºĞ´ Ò²¿ÉÒÔÓÃfontChinese8 Ö®Ç°¶¨ÒåºÃµÄ );
-		document.add(pHeader);// ÔÚÎÄµµÖĞ¼ÓÈëÄãĞ´µÄÄÚÈİ
-		// »ñÈ¡Í¼Æ¬
+//		pHeader.add(new Paragraph("The word you want to input", new Font(bfChinese, 8.0F, 1)));
+		pHeader.add(new Paragraph("write the word you want to input",fontChinese8));
+		// pHeader.add(new Paragraph("æ–‡å­—", å­—ä½“ å¯ä»¥è‡ªå·±å†™ ä¹Ÿå¯ä»¥ç”¨fontChinese8 ä¹‹å‰å®šä¹‰å¥½çš„ );
+		document.add(pHeader);// åœ¨æ–‡æ¡£ä¸­åŠ å…¥ä½ å†™çš„å†…å®¹
+		// è·å–å›¾ç‰‡
 		Image img2 = Image.getInstance(picPath + "testPDF.png");
-		//ÉèÖÃÍ¼Æ¬´óĞ¡
+		//è®¾ç½®å›¾ç‰‡å¤§å°
 		img2.scaleAbsolute(100.0F, 100.0F);
-		//ÉèÖÃÍ¼Æ¬ÔÚÎÄµµÖĞµÄ¾ø¶ÔÎ»ÖÃ30.0F¶¨ÒåÍ¼Æ¬¾àÀë×ó±ß¾à£¬600.0F¶¨ÒåÍ¼Æ¬¾àÀëµ×±ß¾àÀë
+		//è®¾ç½®å›¾ç‰‡åœ¨æ–‡æ¡£ä¸­çš„ç»å¯¹ä½ç½®30.0Få®šä¹‰å›¾ç‰‡è·ç¦»å·¦è¾¹è·ï¼Œ600.0Få®šä¹‰å›¾ç‰‡è·ç¦»åº•è¾¹è·ç¦»
 		img2.setAbsolutePosition(30.0F, 600.0F);
-		// ½«Í¼Æ¬Ìí¼Óµ½ÎÄµµÖĞ
+		// å°†å›¾ç‰‡æ·»åŠ åˆ°æ–‡æ¡£ä¸­
 		document.add(img2);
-		// ¹Ø±ÕÎÄµµ
+		// å…³é—­æ–‡æ¡£
 		document.close();
 	}
 
 	public void saveLocal() throws IOException, DocumentException {
-		// Ö±½ÓÉú³ÉPDF ÖÆ¶¨Éú³Éµ½DÅÌtest.pdf
+		// ç›´æ¥ç”ŸæˆPDF ç»å¯¹è·¯å¾„
 		File file = new File("C:\\Users\\liubing17\\Desktop\\testPDF.pdf");
 		file.createNewFile();
 		PdfWriter.getInstance(document, new FileOutputStream(file));
